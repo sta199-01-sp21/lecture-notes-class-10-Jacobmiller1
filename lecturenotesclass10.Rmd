@@ -169,19 +169,34 @@ Suppose you roll two fair six-sided dice. Which has a higher probability:
 the square of dice roll 1 is equal to dice roll 2; or the absolute value of the
 difference between dice roll 1 and dice roll 2 is equal to 4.
 
+I think there is a greater probability that the square of dice roll 1 is equal 
+to dice roll 2.
+
 Perform a simulation to compute this empirical probability.
 
 Write down your guess to the answer before you calculate it.
 
 ```{r simulate_rolls}
 
+dice <- c("1","2","3","4","5","6")
+dice_roll <- tibble(
+  roll_1 = replicate(n = 10000, expr = sample(1:6, size = 1)),
+  roll_2 = replicate(n = 10000, expr = sample(1:6, size = 1)))
+dice_roll
+
 ```
 
 ```{r identify_events}
+dice_roll <- dice_roll %>%
+  mutate(dice_match = roll_1 == roll_2,
+         abs_4 = abs(roll_1 - roll_2) == 4)
 
+dice_roll
 ```
 
 ```{r summarize_rolls}
+
+
 
 ```
 
