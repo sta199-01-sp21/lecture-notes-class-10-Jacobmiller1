@@ -1,7 +1,7 @@
 ---
 title: "Introduction to probability"
-author: ""
-date: ""
+author: "Jacob Miller"
+date: "2-22"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -195,10 +195,18 @@ dice_roll
 ```
 
 ```{r summarize_rolls}
+dice_roll %>%
+  count(dice_match) %>%
+  mutate(proportion = n / sum(n))
 
-
-
+dice_roll %>%
+  count(abs_4) %>%
+  mutate(proportion = n / sum(n))
 ```
+
+Actual answer: more likely for the number on the dice to match than for the 
+absolute value of the difference between the number on dice 1 and dice 2 to be 
+4.
 
 ## Additional Resources-please look at before Weds.
 
